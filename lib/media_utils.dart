@@ -1,61 +1,59 @@
 library media_utils;
 
-class MediaUtils {
+List _videoExtensions = [".mp4", ".avi", ".wmv", ".rmvb", ".mpg", ".mpeg", ".3gp",];
 
-  static bool isVideo(String filePath) {
-    String ext = filePath.toLowerCase();
-    return (((((ext.endsWith(".mp4") || ext.endsWith(".avi")) ||
-        ext.endsWith(".wmv")) ||
-        ext.endsWith(".rmvb")) ||
-        ext.endsWith(".mpg")) ||
-        ext.endsWith(".mpeg")) ||
-        ext.endsWith(".3gp");
+List _imageExtensions = [".jpg", ".jpeg", ".png", ".gif", ".bmp",];
+
+List _audioExtensions = [".mp3", ".wav", ".wma", ".amr", ".ogg",];
+
+extension MediaUtils on String {
+  bool get isVideo {
+    String ext = this.toLowerCase();
+    return _videoExtensions.where((element) => ext.endsWith(element)).isNotEmpty;
   }
 
-  static bool isImage(String filePath) {
-    String ext = filePath.toLowerCase();
-    return (((ext.endsWith(".jpg") || ext.endsWith(".jpeg")) ||
-        ext.endsWith(".png")) ||
-        ext.endsWith(".gif")) ||
-        ext.endsWith(".bmp");
+  bool get isImage {
+    String ext = this.toLowerCase();
+    return _imageExtensions.where((element) => ext.endsWith(element)).isNotEmpty;
   }
 
-  static bool isAudio(String filePath) {
-    String ext = filePath.toLowerCase();
-    return (((ext.endsWith(".mp3") || ext.endsWith(".wav")) ||
-        ext.endsWith(".wma")) ||
-        ext.endsWith(".amr")) ||
-        ext.endsWith(".ogg");
+  bool get isAudio {
+    String ext = this.toLowerCase();
+    return _audioExtensions.where((element) => ext.endsWith(element)).isNotEmpty;
   }
 
-  static bool isPpt(String filePath) {
-    String ext = filePath.toLowerCase();
+  bool get isPpt {
+    String ext = this.toLowerCase();
     return ext.endsWith(".ppt") || ext.endsWith(".pptx");
   }
 
-  static bool isWord(String filePath) {
-    String ext = filePath.toLowerCase();
+  bool get isWord {
+    String ext = this.toLowerCase();
     return ext.endsWith(".doc") || ext.endsWith(".docx");
   }
 
-  static bool isExcel(String filePath) {
-    String ext = filePath.toLowerCase();
+  bool get isExcel {
+    String ext = this.toLowerCase();
     return ext.endsWith(".xls") || ext.endsWith(".xlsx");
   }
 
-  static bool isApk(String filePath) {
-    return filePath.toLowerCase().endsWith(".apk");
+  bool get isApk {
+    String ext = this.toLowerCase();
+    return ext.endsWith(".apk");
   }
 
-  static bool isPdf(String filePath) {
-    return filePath.toLowerCase().endsWith(".pdf");
+  bool get isPdf {
+    String ext = this.toLowerCase();
+    return ext.endsWith(".pdf");
   }
 
-  static bool isTxt(String filePath) {
-    return filePath.toLowerCase().endsWith(".txt");
+  bool get isTxt {
+    String ext = this.toLowerCase();
+    return ext.endsWith(".txt");
   }
 
-  static bool isChm(String filePath) {
-    return filePath.toLowerCase().endsWith(".chm");
+  bool get isChm {
+    String ext = this.toLowerCase();
+    return ext.endsWith(".chm");
   }
 }

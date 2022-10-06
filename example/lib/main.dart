@@ -1,47 +1,46 @@
 import 'package:flutter/material.dart';
-import 'MediaUtils.dart';
-
+import 'package:media_utils/media_utils.dart';
 
 void main() {
-  runApp(
-     MyApp(),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Media',
       home: MainPage(),
     );
   }
 }
 
-
 class MainPage extends StatelessWidget {
+  final _path = "https://images.pexels.com/photos/2872767/pexels-photo-2872767.jpeg";
 
-  String _path = "https://images.pexels.com/photos/2872767/pexels-photo-2872767.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
+  const MainPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-   
-    print("rebuild");
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add), onPressed: () => null),
+        child: const Icon(Icons.add),
+        onPressed: () {},
+      ),
       body: SafeArea(
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-             (MediaUtils.isImage(_path))?
-             Container(
-               height: 50,
-               width: 50,
-               child: Image.network(
-             _path,
-             ))
-             : Container()
+              _path.isImage
+                  ? SizedBox(
+                      height: 50,
+                      width: 50,
+                      child: Image.network(_path),
+                    )
+                  : Container()
             ],
           ),
         ),
